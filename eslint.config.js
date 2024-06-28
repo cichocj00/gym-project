@@ -3,6 +3,7 @@ import eslintConfigPrettier from 'eslint-config-prettier';
 import perfectionistNatural from 'eslint-plugin-perfectionist/configs/recommended-natural';
 import reactRecommended from 'eslint-plugin-react/configs/jsx-runtime.js';
 import reactHooks from 'eslint-plugin-react-hooks';
+import tailwind from 'eslint-plugin-tailwindcss';
 import eslintPluginUnicorn from 'eslint-plugin-unicorn';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
@@ -40,5 +41,6 @@ export default tseslint.config(
       'unicorn/prevent-abbreviations': 'off',
     },
   },
+  ...tailwind.configs['flat/recommended'],
   eslintConfigPrettier,
 );
