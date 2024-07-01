@@ -1,8 +1,11 @@
+import Test from '@/components/Test';
+import { Button } from '@/components/ui/button';
 function App() {
   return (
-    <span className="text-3xl font-bold text-red-500 underline">
-      Hello world!
-    </span>
+    <div className="w-[700px] p-4 text-center">
+      <Button>Click me</Button>
+      <Test />
+    </div>
   );
 }
 
