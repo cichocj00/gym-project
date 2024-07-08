@@ -7,11 +7,13 @@ import {
 } from 'react-router-dom';
 
 const Homepage = React.lazy(() => import('./Homepage'));
+const Signup = React.lazy(() => import('./Signup'));
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
       <Route element={<Homepage />} path="/" />
+      <Route element={<Signup />} path="/signup" />
     </>,
   ),
 );
