@@ -15,17 +15,22 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
+import { useCreateUserWithPassword } from '../api/signupWithPassword';
+
 const SignupForm = () => {
   const form = useForm<z.infer<typeof signupSchema>>({
     defaultValues: {
+      confirmPassword: '',
       email: '',
       password: '',
     },
     resolver: zodResolver(signupSchema),
   });
 
+  const mutation = useCreateUserWithPassword();
+
   const onSubmit = (values: z.infer<typeof signupSchema>) => {
-    console.log(values);
+    mutation.mutate({ email: values.email, password: values.password });
   };
 
   return (
@@ -34,6 +39,7 @@ const SignupForm = () => {
         {signupFields.map((item) => (
           <FormField
             control={form.control}
+            key={item.name}
             name={item.name}
             render={({ field }) => (
               <FormItem>

@@ -1,4 +1,5 @@
 import eslint from '@eslint/js';
+import pluginQuery from '@tanstack/eslint-plugin-query';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import perfectionistNatural from 'eslint-plugin-perfectionist/configs/recommended-natural';
 import reactRecommended from 'eslint-plugin-react/configs/jsx-runtime.js';
@@ -43,4 +44,5 @@ export default tseslint.config(
   },
   ...tailwind.configs['flat/recommended'],
   eslintConfigPrettier,
+  ...pluginQuery.configs['flat/recommended'],
 );

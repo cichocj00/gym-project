@@ -1,7 +1,7 @@
 interface FormField {
   description: string;
   label: string;
-  name: 'email' | 'password';
+  name: 'confirmPassword' | 'email' | 'password';
   type: string;
 }
 
@@ -16,6 +16,12 @@ export const signupFields: FormField[] = [
     description: 'Enter your password.',
     label: 'Password:',
     name: 'password',
+    type: 'password',
+  },
+  {
+    description: 'Confirm your password.',
+    label: 'Confirm Password:',
+    name: 'confirmPassword',
     type: 'password',
   },
 ];
