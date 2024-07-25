@@ -2,11 +2,13 @@ import { cn } from '@/lib/utils';
 
 interface LoadingSpinnerProps {
   className?: string;
+  label?: string;
   size?: number;
 }
 
 const LoadingSpinner = ({
   className,
+  label = 'Loading',
   size = 24,
   ...props
 }: LoadingSpinnerProps) => {
@@ -27,7 +29,7 @@ const LoadingSpinner = ({
       >
         <path d="M21 12a9 9 0 1 1-6.219-8.56" />
       </svg>
-      <span>Loading</span>
+      <span>{label}</span>
     </div>
   );
 };
