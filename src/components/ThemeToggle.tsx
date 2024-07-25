@@ -5,11 +5,15 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { useThemeStore } from '@/store/theme';
+import { Theme, Themes, useThemeStore } from '@/store/theme';
 import { Moon, Sun } from 'lucide-react';
 
 function ThemeToggle() {
   const setTheme = useThemeStore((state) => state.setTheme);
+
+  const handleUpdateTheme = (theme: Theme) => () => {
+    setTheme(theme);
+  };
 
   return (
     <DropdownMenu>
@@ -21,13 +25,13 @@ function ThemeToggle() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme('light')}>
+        <DropdownMenuItem onClick={handleUpdateTheme(Themes.LIGHT)}>
           Light
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme('dark')}>
+        <DropdownMenuItem onClick={handleUpdateTheme(Themes.DARK)}>
           Dark
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme('system')}>
+        <DropdownMenuItem onClick={handleUpdateTheme(Themes.SYSTEM)}>
           System
         </DropdownMenuItem>
       </DropdownMenuContent>

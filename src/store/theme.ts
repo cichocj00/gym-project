@@ -1,6 +1,12 @@
 import { create } from 'zustand';
 
-type Theme = 'dark' | 'light' | 'system';
+export enum Themes {
+  DARK = 'dark',
+  LIGHT = 'light',
+  SYSTEM = 'system',
+}
+
+export type Theme = Themes.DARK | Themes.LIGHT | Themes.SYSTEM;
 
 interface ThemeState {
   setTheme: (theme: Theme) => void;
