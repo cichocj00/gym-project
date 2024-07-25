@@ -28,7 +28,6 @@ export const useSigninWithPassword = () => {
       alert(error.message);
     },
     onSuccess: () => {
-      console.log('Signin successful');
       navigate('/dashboard/home');
     },
   });

@@ -24,9 +24,6 @@ export const useCreateUserWithPassword = () => {
   const navigate = useNavigate();
   return useMutation({
     mutationFn: createUser,
-    onError: (error: Error) => {
-      alert(error.message);
-    },
     onSuccess: () => {
       navigate('/signin');
     },

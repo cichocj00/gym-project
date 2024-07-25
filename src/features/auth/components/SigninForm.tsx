@@ -26,10 +26,14 @@ const SigninForm = () => {
     resolver: zodResolver(signinSchema),
   });
 
-  const mutation = useSigninWithPassword();
+  const {
+    error,
+    isError,
+    mutate: signinWithPassword,
+  } = useSigninWithPassword();
 
   const onSubmit = (values: z.infer<typeof signinSchema>) => {
-    mutation.mutate({ email: values.email, password: values.password });
+    signinWithPassword({ email: values.email, password: values.password });
   };
 
   return (
@@ -52,6 +56,7 @@ const SigninForm = () => {
             )}
           />
         ))}
+        {isError && <FormMessage>{error?.message}</FormMessage>}
         <Button className="w-full" type="submit">
           Sign In
         </Button>

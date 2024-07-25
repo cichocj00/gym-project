@@ -4,6 +4,7 @@ import { queryClient } from '@/lib/react-query';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { Suspense } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
+import { ToastContainer } from 'react-toastify';
 
 interface AppProviderProps {
   children: React.ReactNode;
@@ -19,7 +20,10 @@ const AppProvider = ({ children }: AppProviderProps) => {
       }
     >
       <QueryClientProvider client={queryClient}>
-        <HelmetProvider>{children}</HelmetProvider>
+        <HelmetProvider>
+          {children}
+          <ToastContainer />
+        </HelmetProvider>
       </QueryClientProvider>
     </Suspense>
   );

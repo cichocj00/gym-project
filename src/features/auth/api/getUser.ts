@@ -1,11 +1,13 @@
 import { supabase } from '@/lib/supabaseClient';
-import { useQuery, useQuery } from '@tanstack/react-query';
+import { queryKeys } from '@/lib/tags';
+import { useQuery } from '@tanstack/react-query';
+import { toast } from 'react-toastify';
 
 const getUser = async () => {
   const { data, error } = await supabase.auth.getUser();
 
   if (error) {
-    throw new Error(error.message);
+    toast.error(error.message);
   }
 
   return data;
@@ -14,6 +16,6 @@ const getUser = async () => {
 export const useGetUser = () => {
   return useQuery({
     queryFn: getUser,
-    queryKey: ['user'],
+    queryKey: [queryKeys.user],
   });
 };

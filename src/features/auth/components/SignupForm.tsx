@@ -27,10 +27,14 @@ const SignupForm = () => {
     resolver: zodResolver(signupSchema),
   });
 
-  const mutation = useCreateUserWithPassword();
+  const {
+    error,
+    isError,
+    mutate: createUserWithPassword,
+  } = useCreateUserWithPassword();
 
   const onSubmit = (values: z.infer<typeof signupSchema>) => {
-    mutation.mutate({ email: values.email, password: values.password });
+    createUserWithPassword({ email: values.email, password: values.password });
   };
 
   return (
@@ -53,6 +57,9 @@ const SignupForm = () => {
             )}
           />
         ))}
+        {isError && (
+          <FormMessage>{error?.message || 'Something went wrong'}</FormMessage>
+        )}
         <Button className="w-full" type="submit">
           Sign Up
         </Button>
